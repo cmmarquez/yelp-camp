@@ -1,0 +1,42 @@
+<% include ../partials/header %>
+
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <h4 class="mb-3">Add a New Campground</h4>
+        <form action="/campgrounds" enctype="multipart/form-data" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" id="name" name="campground[name]" placeholder="Name" required type="text">
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input class="form-control" id="price" min="0.00" name="campground[price]" placeholder="Name"
+                       required step="0.01" type="number">
+            </div>
+            <div class="form-group">
+                <label for="image">Image</label>
+                <p><img alt=" " class="img-thumbnail" id="output" src=""></p>
+                <input accept="image/*" class="form-control" id="image" name="campground[image]"
+                       onchange="loadFile(event)" required type="file">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" name="campground[description]" placeholder="Description"
+                          required rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input class="form-control" id="location" name="campground[location]" placeholder="Location"
+                       required type="text">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-block btn-lg btn-primary">Submit</button>
+            </div>
+        </form>
+        <div class="mb-4">
+            <a href="javascript:history.back()">Go Back</a>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

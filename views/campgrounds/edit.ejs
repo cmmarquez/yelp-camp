@@ -1,0 +1,44 @@
+<% include ../partials/header %>
+
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <h4 class="mb-3">Edit <%= campground.name %></h4>
+        <form action="/campgrounds/<%= campground._id %>?_method=PUT" enctype="multipart/form-data" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" id="name" name="campground[name]" required type="text"
+                       value="<%= campground.name %>">
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input class="form-control" id="price" min="0.00" name="campground[price]" required step="0.01"
+                       type="number" value="<%= campground.price %>">
+            </div>
+            <div class="form-group">
+                <label for="image">Image</label>
+                <p><img alt="<%= campground.name %>" class="img-thumbnail" id="output" src="<%= campground.image %>">
+                </p>
+                <input accept="image/*" class="form-control" id="image" name="campground[image]"
+                       onchange="loadFile(event)" type="file">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" name="campground[description]"
+                          required rows="3"><%= campground.description %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input class="form-control" id="location" name="campground[location]" required type="text"
+                       value="<%= campground.location %>">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-block btn-lg btn-primary">Submit</button>
+            </div>
+        </form>
+        <div class="mb-4">
+            <a href="javascript:history.back()">Go Back</a>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>
